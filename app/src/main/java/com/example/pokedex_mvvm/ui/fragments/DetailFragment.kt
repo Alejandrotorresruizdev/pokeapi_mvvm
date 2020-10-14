@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex_mvvm.R
+import com.example.pokedex_mvvm.adapters.PokemonAdapter
+import com.example.pokedex_mvvm.data.Pokemon
+import kotlinx.android.synthetic.main.list_fragment.*
 
 class DetailFragment : Fragment(R.layout.details_fragment) {
 
@@ -17,5 +21,7 @@ class DetailFragment : Fragment(R.layout.details_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
+
     }
+
 }

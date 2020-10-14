@@ -10,11 +10,17 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:text="Charmander"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPokemon"
+        app:layout_constraintVertical_bias="0.036"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/ivPokemon"
@@ -26,5 +32,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/sample_img" />
+        app:srcCompat="@mipmap/sample_img"
+        android:contentDescription="TODO" />
 </androidx.constraintlayout.widget.ConstraintLayout>
