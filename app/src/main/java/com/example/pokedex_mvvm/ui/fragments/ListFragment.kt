@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex_mvvm.R
 import com.example.pokedex_mvvm.adapters.PokemonAdapter
 import com.example.pokedex_mvvm.data.Pokemon
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_fragment.*
+import kotlinx.android.synthetic.main.pokemon_item.*
 
 class ListFragment : Fragment(R.layout.list_fragment) {
 
-    var adapter: PokemonAdapter? = null
+    lateinit var adapter: PokemonAdapter
+
     var pokemonList = ArrayList<Pokemon>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,20 +25,26 @@ class ListFragment : Fragment(R.layout.list_fragment) {
 
         initFakeData()
         initAdapter()
+
+        adapter.setOnItemClickListener {currentPokemon ->
+            val bundle = Bundle().apply {
+                putSerializable("pokemon",currentPokemon)
+            }
+
+            findNavController().navigate(
+                R.id.action_listFragment_to_detailFragment,
+                bundle
+            )
+        }
     }
 
 
     private fun initFakeData(){
         pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Bulbasur"))
+        pokemonList.add(Pokemon("Raichu"))
+        pokemonList.add(Pokemon("Charmander"))
+        pokemonList.add(Pokemon("Charmaleon"))
     }
 
     private fun initAdapter() {

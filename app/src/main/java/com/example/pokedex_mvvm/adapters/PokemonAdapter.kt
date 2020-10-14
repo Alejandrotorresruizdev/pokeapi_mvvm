@@ -27,7 +27,15 @@ class PokemonAdapter(
         val currentPokemonItem = pokemonList[position]
 
         holder.itemView.tvName.text = currentPokemonItem.name
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { it(currentPokemonItem) }
+        }
     }
 
+    private var onItemClickListener: ((Pokemon) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Pokemon) -> Unit) {
+        onItemClickListener = listener
+    }
 
 }

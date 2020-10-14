@@ -14,5 +14,9 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.pokedex_mvvm.ui.fragments.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="DetailFragment">
+        <argument
+            android:name="pokemon"
+            app:argType="com.example.pokedex_mvvm.data.Pokemon" />
+    </fragment>
 </navigation>

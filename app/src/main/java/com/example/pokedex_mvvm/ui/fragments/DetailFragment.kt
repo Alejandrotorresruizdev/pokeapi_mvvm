@@ -1,26 +1,26 @@
 package com.example.pokedex_mvvm.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.navigation.fragment.navArgs
 import com.example.pokedex_mvvm.R
-import com.example.pokedex_mvvm.adapters.PokemonAdapter
-import com.example.pokedex_mvvm.data.Pokemon
-import kotlinx.android.synthetic.main.list_fragment.*
+import com.google.android.material.snackbar.Snackbar
+
+import kotlinx.android.synthetic.main.pokemon_item.tvName
 
 class DetailFragment : Fragment(R.layout.details_fragment) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    val safeArgs: DetailFragmentArgs by navArgs()
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //var gt = this.arguments?.getSerializable("pokemon")
+        Log.i("Snackbar", ""+gt.toString());
+
 
     }
 
