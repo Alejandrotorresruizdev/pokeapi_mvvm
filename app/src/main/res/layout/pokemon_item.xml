@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
+        android:background="#D1FF0000"
         android:text="Nueva tarjeta"
         android:paddingLeft="35dp"
         android:textColor="#ffe3e3e3"
