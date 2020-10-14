@@ -20,16 +20,16 @@
         card_view:srcCompat="@mipmap/sample_img" />
 
     <TextView
-            android:id="@+id/tvName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="#8c000000"
-            android:padding="10dp"
-            android:text="Nueva tarjeta"
-            android:textColor="#ffe3e3e3"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        android:text="Nueva tarjeta"
+        android:paddingLeft="35dp"
+        android:textColor="#ffe3e3e3"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 
 </androidx.cardview.widget.CardView>

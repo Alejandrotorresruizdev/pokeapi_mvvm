@@ -1,18 +1,17 @@
-package com.example.pokedex_mvvm
+package com.example.pokedex_mvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pokedex_mvvm.R
+import com.example.pokedex_mvvm.adapters.PokemonAdapter
 import com.example.pokedex_mvvm.data.Pokemon
-import com.example.pokedex_mvvm.utils.GridItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.pokemon_item.*
 import kotlinx.android.synthetic.main.pokemon_item.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,17 +24,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
-        pokemonList.add(Pokemon("Pikachu"))
+        initCustomToolbar()
+        initFakeData()
+        initAdapter()
 
+    }
+
+    private fun initCustomToolbar() {
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM;
+        supportActionBar?.setCustomView(R.layout.custom_toolbar)
+    }
+    private fun initFakeData(){
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+        pokemonList.add(Pokemon("Pikachu"))
+    }
+
+    private fun initAdapter() {
         // Instanciamos el adaptador
         adapter = PokemonAdapter(pokemonList)
 
@@ -46,28 +58,4 @@ class MainActivity : AppCompatActivity() {
         // Le asignamos el adaptador al RecyclerView
         rvPokemonItems.adapter = adapter
     }
-}
-
-class PokemonAdapter(
-    var pokemonList: ArrayList<Pokemon>
-) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
-
-    inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item,parent,false)
-        return PokemonViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        return pokemonList.size
-    }
-
-    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        val currentPokemonItem = pokemonList[position]
-
-        holder.itemView.tvName.text = currentPokemonItem.name
-    }
-
-
 }
