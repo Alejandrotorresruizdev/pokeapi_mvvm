@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         initCustomToolbar()
         bottomNavigationView.setupWithNavController(appNavHostFragment.findNavController())
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.appNavHostFragment).navigateUp()
     }
 
     private fun initCustomToolbar() {
