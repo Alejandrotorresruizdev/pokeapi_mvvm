@@ -19,7 +19,7 @@ class DetailFragment : Fragment(R.layout.details_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         //var gt = this.arguments?.getSerializable("pokemon")
-        Log.i("Snackbar", ""+gt.toString());
+        //Log.i("Snackbar", ""+gt.toString());
 
 
     }
