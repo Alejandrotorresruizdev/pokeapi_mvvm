@@ -18,5 +18,8 @@
         <argument
             android:name="pokemon"
             app:argType="com.example.pokedex_mvvm.data.Pokemon" />
+        <action
+            android:id="@+id/action_detailFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun initCustomToolbar() {
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM;
         supportActionBar?.setCustomView(R.layout.custom_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
 
