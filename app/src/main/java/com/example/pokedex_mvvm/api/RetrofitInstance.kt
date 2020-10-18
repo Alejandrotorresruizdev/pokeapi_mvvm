@@ -7,7 +7,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstance {
-    class RetrofitInstance {
         companion object {
             private val retrofit by lazy {
                 val logging = HttpLoggingInterceptor()
@@ -26,5 +25,4 @@ class RetrofitInstance {
                 retrofit.create(PokemonAPi::class.java)
             }
         }
-    }
 }

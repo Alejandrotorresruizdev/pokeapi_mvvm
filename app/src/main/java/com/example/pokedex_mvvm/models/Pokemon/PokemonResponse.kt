@@ -1,6 +1,6 @@
 package com.example.pokedex_mvvm.models.Pokemon
 
-data class Pokemon(
+data class PokemonResponse(
     val count: Int,
     val next: String,
     val previous: Any,
