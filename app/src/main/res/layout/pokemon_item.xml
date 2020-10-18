@@ -28,7 +28,7 @@
         android:text="Nueva tarjeta"
         android:paddingLeft="35dp"
         android:textColor="#ffe3e3e3"
-        android:textSize="30sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
 

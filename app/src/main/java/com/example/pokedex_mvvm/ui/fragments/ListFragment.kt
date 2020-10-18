@@ -1,18 +1,15 @@
 package com.example.pokedex_mvvm.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex_mvvm.R
 import com.example.pokedex_mvvm.adapters.PokemonAdapter
 import com.example.pokedex_mvvm.data.Pokemon
-import com.google.android.material.snackbar.Snackbar
+import com.example.pokedex_mvvm.ui.MainActivity
 import kotlinx.android.synthetic.main.list_fragment.*
-import kotlinx.android.synthetic.main.pokemon_item.*
 
 class ListFragment : Fragment(R.layout.list_fragment) {
 
@@ -25,6 +22,9 @@ class ListFragment : Fragment(R.layout.list_fragment) {
 
         initFakeData()
         initAdapter()
+
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
 
         adapter.setOnItemClickListener {currentPokemon ->
             val bundle = Bundle().apply {
