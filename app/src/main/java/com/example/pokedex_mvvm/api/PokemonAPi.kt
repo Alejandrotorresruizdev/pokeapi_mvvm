@@ -7,11 +7,11 @@ import retrofit2.http.Query
 
 interface PokemonAPi {
 
-    @GET("pokemon?limit=20&offset=0")
+    @GET("pokemon")
     suspend fun getAllPokemons(
-        @Query("country")
-        countryCode: String = "us",
-        @Query("page")
-        pageNumber: Int = 1
+        @Query("limit")
+        limit: Int = 10,
+        @Query("offset")
+        offset: Int = 0
     ): Response<PokemonResponse>
 }

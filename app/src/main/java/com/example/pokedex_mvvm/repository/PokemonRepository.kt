@@ -4,7 +4,7 @@ import com.example.pokedex_mvvm.api.RetrofitInstance
 
 class PokemonRepository {
 
-    suspend fun getAllPokemons() =
-        RetrofitInstance.api.getAllPokemons()
+    suspend fun getAllPokemons(limit: Int,offset:Int) =
+        RetrofitInstance.api.getAllPokemons(limit,offset)
 
 }
