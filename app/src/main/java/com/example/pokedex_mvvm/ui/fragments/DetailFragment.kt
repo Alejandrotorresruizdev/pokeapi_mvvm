@@ -43,11 +43,11 @@ class DetailFragment : Fragment(R.layout.details_fragment) {
         }
         tabLayoutMediator.attach()
 
-        Glide.with(this)
+       /* Glide.with(this)
             .asGif()
             .load(Constants.BASE_GIF_URL +"${4}.gif")
             .thumbnail(0.25f)
-            .into(imageView)
+            .into(imageView)*/
 
 
     }
