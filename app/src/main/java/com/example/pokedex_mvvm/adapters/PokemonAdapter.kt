@@ -11,6 +11,8 @@ import com.example.pokedex_mvvm.R
 import com.example.pokedex_mvvm.models.Pokemon.PokemonResponse
 import com.example.pokedex_mvvm.models.Pokemon.Result
 import com.example.pokedex_mvvm.utils.Constants.Companion.BASE_GIF_URL
+import com.example.pokedex_mvvm.utils.Constants.Companion.BASE_IMG_URL
+import com.example.pokedex_mvvm.utils.Constants.Companion.BASE_URL
 import kotlinx.android.synthetic.main.pokemon_item.view.*
 
 class PokemonAdapter(val pokemonList:MutableList<Result>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
@@ -33,8 +35,7 @@ class PokemonAdapter(val pokemonList:MutableList<Result>) : RecyclerView.Adapter
             tvName.text = currentPokemonItem.name
             tvNumber.text = "#"+(position + 1).toString()
             Glide.with(this)
-                .asGif()
-                .load(BASE_GIF_URL+"${position+1}.gif")
+                .load(BASE_IMG_URL+"${position+1}.png")
                 .thumbnail(0.25f)
                 .into(imageView)
                 setOnClickListener {

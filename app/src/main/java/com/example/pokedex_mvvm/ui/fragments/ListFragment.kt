@@ -71,12 +71,12 @@ class ListFragment : Fragment(R.layout.list_fragment) {
     }
 
     private fun hideProgressBar () {
-        //paginationProgressBar.visibility = View.INVISIBLE
+        paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
     }
 
     private fun showProgressBar() {
-        //paginationProgressBar.visibility = View.VISIBLE
+        paginationProgressBar.visibility = View.VISIBLE
         isLoading = true
     }
 
@@ -123,5 +123,6 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         rvPokemonItems.addOnScrollListener(scrollListener)
         // Le asignamos el adaptador al RecyclerView
         rvPokemonItems.adapter = adapter
+
     }
 }
