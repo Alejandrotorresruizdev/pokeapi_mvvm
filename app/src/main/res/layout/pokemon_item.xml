@@ -8,26 +8,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:rippleColor="@color/gold"
+    app:rippleColor="@color/blueLetter"
     app:shapeAppearance="@style/CustomCardViewItem"
-    app:strokeColor="#ffcb8e"
+    app:strokeColor="#28abb9"
     app:strokeWidth="2dp"
-    app:cardElevation="5dp">
+    app:cardElevation="10dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/gold"
-        app:cardElevation="10dp"
+        app:cardBackgroundColor="#effad3"
         android:layout_gravity="left"
+        app:strokeColor="#28abb9"
+        app:strokeWidth="2dp"
+        app:cardElevation="10dp"
         app:shapeAppearance="@style/CustomCardViewItem">
 
         <TextView
             android:id="@+id/tvNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gold"
+            android:background="#effad3"
             android:text="1"
             android:padding="5dp"
             android:textSize="13sp"
@@ -50,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:paddingStart="5dp"
+        android:textColor="#28abb9"
         android:text="@string/namePokemon"
         android:textSize="20sp"
         android:textStyle="bold" />
