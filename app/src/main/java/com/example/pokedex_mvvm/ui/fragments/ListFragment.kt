@@ -35,7 +35,6 @@ class ListFragment : Fragment(R.layout.list_fragment) {
 
         initAdapter()
 
-        Log.i("Snackbar", pokemonList.toString());
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         viewModel.pokemonList.observe(viewLifecycleOwner, Observer { response ->
@@ -60,7 +59,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
 
         adapter.setOnItemClickListener {currentPokemon ->
             val bundle = Bundle().apply {
-                putSerializable("pokemon",currentPokemon)
+                putInt("id",currentPokemon)
             }
 
             findNavController().navigate(

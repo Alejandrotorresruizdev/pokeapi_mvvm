@@ -38,15 +38,17 @@ class PokemonAdapter(val pokemonList:MutableList<Result>) : RecyclerView.Adapter
                 .load(BASE_IMG_URL+"${position+1}.png")
                 .thumbnail(0.25f)
                 .into(imageView)
-                setOnClickListener {
-                onItemClickListener?.let { it(currentPokemonItem) }
+            setOnClickListener {
+                onItemClickListener?.let { it(position) }
             }
+
         }
 
     }
-    private var onItemClickListener: ((Result) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Result) -> Unit) {
+    private var onItemClickListener: ((Int) -> Unit)? = null
+
+   fun setOnItemClickListener(listener: (Int) -> Unit) {
         onItemClickListener = listener
     }
 

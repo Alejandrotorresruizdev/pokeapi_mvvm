@@ -21,7 +21,6 @@ class PokemonListViewModel(val pokemonRepository: PokemonRepository) : ViewModel
 
     init {
         getAllPokemons()
-        Log.i("Snackbar", "nuevooo");
     }
 
      fun getAllPokemons() = viewModelScope.launch{
