@@ -9,12 +9,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pokedex_mvvm.R
 import com.example.pokedex_mvvm.repository.PokemonRepository
+import com.example.pokedex_mvvm.ui.view_models.PokemonDetailsViewModel
 import com.example.pokedex_mvvm.ui.view_models.PokemonListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: PokemonListViewModel
+    lateinit var viewModelDetails: PokemonDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -28,11 +30,20 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this,viewModelProviderFactory).get(PokemonListViewModel::class.java)
 
+        initViewModel()
+
         bottomNavigationView.setupWithNavController(appNavHostFragment.findNavController())
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.appNavHostFragment).navigateUp()
+    }
+
+    fun initViewModel(){
+        val pokemonRepository = PokemonRepository()
+        val viewModelProviderFactory = PokemonDetailsViewModelProviderFactory(pokemonRepository)
+
+        viewModelDetails = ViewModelProvider(this,viewModelProviderFactory).get(PokemonDetailsViewModel::class.java)
     }
 
     private fun initCustomToolbar() {
