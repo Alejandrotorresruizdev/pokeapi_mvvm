@@ -6,7 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.pokedex_mvvm.R
+import com.example.pokedex_mvvm.models.PokemonById.PokemonByIdResult
+import com.example.pokedex_mvvm.repository.PokemonRepository
+import com.example.pokedex_mvvm.ui.MainActivity
+import com.example.pokedex_mvvm.ui.PokemonDetailsViewModelProviderFactory
+import com.example.pokedex_mvvm.ui.view_models.PokemonDetailsViewModel
+import com.example.pokedex_mvvm.utils.Resource
 import kotlinx.android.synthetic.main.stats_fragment.*
 
 
@@ -22,11 +31,13 @@ private const val ARG_PARAM2 = "param2"
  */
 class StatsFragment : Fragment(R.layout.stats_fragment) {
 
+
+    lateinit var pokemonDetails : PokemonByIdResult
+    lateinit var viewModel: PokemonDetailsViewModel
+
     companion object{
         private const val ARG_OBJECT = "object"
     }
-
-
 
 
     override fun onCreateView(
@@ -37,21 +48,26 @@ class StatsFragment : Fragment(R.layout.stats_fragment) {
         return inflater.inflate(R.layout.stats_fragment, container, false)
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("BUNDLEMAGICO","BUNDLE  "+arguments)
-        arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            textView.text = "Fragmento "+getInt(ARG_OBJECT).toString()
-            //textView2.text = "Fragmento "+getInt(ARG_OBJECT).toString()
-            Log.e("BUNDLEMAGICO","BUNDLE  "+getInt(ARG_OBJECT).toString())
+
+        viewModel = (activity as MainActivity).viewModelDetails
+
+        val pokeDetails = viewModel.pokemonDetails.value
+
+        val pokeStats = pokeDetails?.data?.stats;
+
+
+        if (pokeStats != null) {
+            for (stat in pokeStats){
+                Log.e("stats", stat.toString())
+            }
         }
 
 
+
+
     }
-
-
-
-
-
-
 }

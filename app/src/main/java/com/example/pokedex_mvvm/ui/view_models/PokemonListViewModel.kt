@@ -15,26 +15,29 @@ class PokemonListViewModel(val pokemonRepository: PokemonRepository) : ViewModel
     val pokemonList : MutableLiveData<Resource<PokemonResponse>> = MutableLiveData()
     var pokemonResponse : PokemonResponse? = null
 
-    private var pokemonPages = 0
+    var pokemonPages = 0
     private var offset = 0
     private var limit = 10
 
     init {
         getAllPokemons()
+        Log.d("response", "gest all")
     }
 
      fun getAllPokemons() = viewModelScope.launch{
         pokemonList.postValue(Resource.Loading())
         val response = pokemonRepository.getAllPokemons(limit,offset)
         pokemonList.postValue(handlegetAllPokemonsResponse(response))
+         Log.d("response22", response?.toString())
 
-    }
+
+     }
 
     private fun handlegetAllPokemonsResponse(response: Response<PokemonResponse>) : Resource<PokemonResponse> {
         if(response.isSuccessful){
             response.body()?.let {resultResponse ->
                 pokemonPages++
-                offset = pokemonPages  * 10
+                offset = pokemonPages * 10
                 limit = 10
                 if(pokemonResponse == null){
                     pokemonResponse = resultResponse

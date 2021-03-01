@@ -5,7 +5,10 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.pokedex_mvvm.models.Pokemon.PokemonResponse
+import com.example.pokedex_mvvm.models.PokemonById.PokemonByIdResult
 import com.example.pokedex_mvvm.ui.fragments.*
+import com.example.pokedex_mvvm.ui.view_models.PokemonDetailsViewModel
 
 
 class ViewPageAdapter(fa:  FragmentActivity)  : FragmentStateAdapter(fa) {
@@ -14,6 +17,7 @@ class ViewPageAdapter(fa:  FragmentActivity)  : FragmentStateAdapter(fa) {
     companion object{
         private const val ARG_OBJECT = "object"
     }
+
 
     override fun getItemCount(): Int = 2
 
@@ -39,12 +43,6 @@ class ViewPageAdapter(fa:  FragmentActivity)  : FragmentStateAdapter(fa) {
              }
             else -> StatsFragment()
          }
-        /* val fragment = DemoObjectFragment()
-         fragment.arguments = Bundle().apply {
-             // Our object is just an integer :-P
-             putInt(ARG_OBJECT, position + 1)
-         }
-         return fragment*/
     }
 }
 

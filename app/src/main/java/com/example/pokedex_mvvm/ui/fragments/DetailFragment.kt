@@ -28,14 +28,14 @@ import kotlinx.android.synthetic.main.list_fragment.*
 class DetailFragment : Fragment(R.layout.details_fragment){
 
 
-    private val adapter by lazy { activity?.let { ViewPageAdapter(it) } }
-
-    val safeArgs: DetailFragmentArgs by navArgs()
-
     lateinit var pokemonDetails : PokemonByIdResult
     lateinit var viewModel: PokemonDetailsViewModel
 
     var pokemonId : Int = 0
+
+    private val adapter by lazy { activity?.let { ViewPageAdapter(it) } }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +44,8 @@ class DetailFragment : Fragment(R.layout.details_fragment){
         //itemPokemon = this.arguments?.getSerializable("pokemon") as Result
 
         pokemonId = this.arguments?.getInt("id") as Int
+        viewModel = (activity as MainActivity).viewModelDetails
 
-        initViewModel()
         viewModel.getPokemonById(pokemonId+1)
 
         viewModel.pokemonDetails.observe(viewLifecycleOwner, Observer { response ->
@@ -81,12 +81,6 @@ class DetailFragment : Fragment(R.layout.details_fragment){
         layout.visibility = View.INVISIBLE
     }
 
-    fun initViewModel(){
-        val pokemonRepository = PokemonRepository()
-        val viewModelProviderFactory = PokemonDetailsViewModelProviderFactory(pokemonRepository)
-
-        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(PokemonDetailsViewModel::class.java)
-    }
 
     fun initViewPagerAdapter(){
         pager.adapter = adapter
@@ -106,6 +100,7 @@ class DetailFragment : Fragment(R.layout.details_fragment){
 
 
     fun initUI() {
+
         tvName.text = pokemonDetails.name
         tvNumberPokedex.text = "#"+(pokemonDetails.id).toString()
         tvWeight.text = "Weight: "+ pokemonDetails.weight.toString()
@@ -119,7 +114,6 @@ class DetailFragment : Fragment(R.layout.details_fragment){
             if(type.slot == 1) tvType1.text = type.type.name
             if(type.slot == 2) tvType2.text = type.type.name
         }
-
 
     }
 
