@@ -2,6 +2,7 @@ package com.example.pokedex_mvvm.api
 
 import com.example.pokedex_mvvm.models.Pokemon.PokemonResponse
 import com.example.pokedex_mvvm.models.PokemonById.PokemonByIdResult
+import com.example.pokedex_mvvm.models.PokemonDescription.PokemonDescription
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -25,5 +26,10 @@ interface PokemonAPi {
     suspend fun getPokemonById(
         @Path("id") id: Int
     ): Response<PokemonByIdResult>
+
+    @GET("https://pokeapi.co/api/v2/pokemon-species/{id}")
+    suspend fun getDescriptionPokemon(
+        @Path("id") id: Int
+    ) : Response<PokemonDescription>
 
 }

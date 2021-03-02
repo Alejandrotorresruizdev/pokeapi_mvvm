@@ -31,14 +31,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class StatsFragment : Fragment(R.layout.stats_fragment) {
 
-
-    lateinit var pokemonDetails : PokemonByIdResult
     lateinit var viewModel: PokemonDetailsViewModel
-
-    companion object{
-        private const val ARG_OBJECT = "object"
-    }
-
+    private var pokemonDetails: Resource<PokemonByIdResult>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,26 +42,35 @@ class StatsFragment : Fragment(R.layout.stats_fragment) {
         return inflater.inflate(R.layout.stats_fragment, container, false)
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as MainActivity).viewModelDetails
 
-        val pokeDetails = viewModel.pokemonDetails.value
+        pokemonDetails = viewModel.pokemonDetails.value
 
-        val pokeStats = pokeDetails?.data?.stats;
-
-
-        if (pokeStats != null) {
-            for (stat in pokeStats){
-                Log.e("stats", stat.toString())
-            }
-        }
-
-
-
+        renderStats()
 
     }
+
+   private fun renderStats () {
+       val pokeStats = pokemonDetails?.data?.stats;
+
+       if (pokeStats != null) {
+           for (stat in pokeStats){
+
+               val typeStat = stat.stat.name
+               val valueStat = stat.base_stat;
+
+               when(typeStat){
+                   "hp" ->  progressBarHP.progress = valueStat
+                   "attack" -> progressBarAttack.progress = valueStat
+                   "defense" -> progressBarDefense.progress = valueStat
+                   "special-attack" -> progressBarSpAtk.progress = valueStat
+                   "special-defense" -> progressBarSpDef.progress = valueStat
+                   "speed" -> progressBarSpeed.progress = valueStat
+               }
+           }
+       }
+   }
 }

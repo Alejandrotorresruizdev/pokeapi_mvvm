@@ -25,12 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         initCustomToolbar()
 
-        val pokemonRepository = PokemonRepository()
-        val viewModelProviderFactory = PokemonViewModellProviderFactory(pokemonRepository)
-
-        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(PokemonListViewModel::class.java)
-
-        initViewModel()
+        initViewModels()
 
         bottomNavigationView.setupWithNavController(appNavHostFragment.findNavController())
     }
@@ -39,11 +34,14 @@ class MainActivity : AppCompatActivity() {
         return findNavController(R.id.appNavHostFragment).navigateUp()
     }
 
-    fun initViewModel(){
+    private fun initViewModels(){
         val pokemonRepository = PokemonRepository()
-        val viewModelProviderFactory = PokemonDetailsViewModelProviderFactory(pokemonRepository)
 
-        viewModelDetails = ViewModelProvider(this,viewModelProviderFactory).get(PokemonDetailsViewModel::class.java)
+        val viewModelProviderFactory = PokemonViewModellProviderFactory(pokemonRepository)
+        val viewModelProviderFactoryDescription = PokemonDetailsViewModelProviderFactory(pokemonRepository)
+
+        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(PokemonListViewModel::class.java)
+        viewModelDetails = ViewModelProvider(this,viewModelProviderFactoryDescription).get(PokemonDetailsViewModel::class.java)
     }
 
     private fun initCustomToolbar() {

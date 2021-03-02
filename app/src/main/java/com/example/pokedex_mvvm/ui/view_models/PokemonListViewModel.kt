@@ -21,16 +21,12 @@ class PokemonListViewModel(val pokemonRepository: PokemonRepository) : ViewModel
 
     init {
         getAllPokemons()
-        Log.d("response", "gest all")
     }
 
      fun getAllPokemons() = viewModelScope.launch{
         pokemonList.postValue(Resource.Loading())
         val response = pokemonRepository.getAllPokemons(limit,offset)
         pokemonList.postValue(handlegetAllPokemonsResponse(response))
-         Log.d("response22", response?.toString())
-
-
      }
 
     private fun handlegetAllPokemonsResponse(response: Response<PokemonResponse>) : Resource<PokemonResponse> {

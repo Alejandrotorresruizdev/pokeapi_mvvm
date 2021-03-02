@@ -9,4 +9,7 @@ class PokemonRepository {
 
     suspend fun getPokemonById(id : Int) =
         RetrofitInstance.api.getPokemonById(id)
+
+    suspend fun getDescriptionPokemon(id: Int) =
+        RetrofitInstance.api.getDescriptionPokemon(id)
 }

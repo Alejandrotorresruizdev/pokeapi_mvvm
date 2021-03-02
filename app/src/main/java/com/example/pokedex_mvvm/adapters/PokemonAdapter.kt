@@ -43,7 +43,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() 
         val currentPokemonItem = differ.currentList[position]
 
         holder.itemView.apply {
-            tvName.text = currentPokemonItem.name
+            tvName.text = currentPokemonItem.name.capitalize()
             tvNumber.text = "#"+(position + 1).toString()
             Glide.with(this)
                 .load(BASE_IMG_URL+"${position+1}.png")
